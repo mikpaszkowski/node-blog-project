@@ -16,7 +16,7 @@ app.listen(3000);
 //requests
 app.get('/', (req, res) => {
 
-    res.sendFile('./views/index.html', {root: __dirname});
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
