@@ -13,6 +13,14 @@ app.set('view engine', 'ejs');
 //listening for requests on the port 3000
 app.listen(3000);
 
+app.use((req, res, next) => {
+    console.log('new request made: ');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+    next();
+});
+
 //requests
 app.get('/', (req, res) => {
     
