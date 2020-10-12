@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300&display=swap');
+
+$font-stack : 'Lato', sans-serif;
+$nice-grey-color: #eee;
+
+
+body{
+    max-width: 1000px;
+    margin: 15px auto;
+    padding: 0 100px;
+    font-family: $font-stack;
+    font-weight: 300;
+}
+p, h1, h2, h3, a, ul{
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #222222;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    align-items: flex-end;
+    border-bottom: 1px solid rgb(167, 167, 167);
+    text-transform: uppercase;
+
+    h1{
+        font-size: 3em;
+        margin-bottom: 30px;
+    }
+    p{
+        font-size: .7em;
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 0;
+
+        li{
+            list-style: none;
+            margin-left: 2.5em;
+        }
+        a{
+            text-decoration: none;
+            font-family: $font-stack;
+            font-size: .7em;
+            font-weight: 400;
+            color: black;
+        }
+    }
+}
+/*------------- HOME ------------*/
+
+.blog-display{
+
+    h2{
+        font-size: 20px;
+    }
+}
+
+
+/*------------- ABOUT ------------*/
+
+.about{
+
+    h2{
+        margin-bottom: 25px;
+    }
+}
+
+/*------------- ADD BLOG ------------*/
+
+.add-blog-form{
+    max-width: 400px;
+    margin: 0 auto;
+
+    input,
+    textarea{
+        display: block;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    input{
+        height: 30px;
+        font-size: 1.3em;
+    }
+    textarea{
+        height: 150px;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        button{
+            align-self: center;
+            width: 50%;
+            height: 35px;
+            background-color: crimson;
+            color: white;
+            border: transparent;
+            cursor: pointer;
+        }
+
+        label{
+            font-weight: 400;
+            letter-spacing: .1em;
+        }
+    }
+}
+
+
+/*------------- CONTENT SECTION ------------*/
+
+.content{
+    line-height: 150%;
+    
+    h2{
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    h3{
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+    p{
+        margin-bottom: 20px;
+    }
+}
+
+
+/*------------- EACH BLOG ------------*/
+.blogs a{
+        display: block;
+        border-left: 5px solid rgb(40, 131, 59);
+        padding: 15px 0;
+        padding-left: 20px;
+        margin-bottom: 50px;
+        transition: box-shadow .2s ease-in-out;
+
+        h3{
+            transition: color .3s ease-in-out;
+        }
+
+        &:hover h3{
+            color:  rgb(40, 131, 59);
+        }
+
+        &:hover{
+            box-shadow: 1px 0px 3px 2px rgb(175, 175, 175);
+        }
+}
+
+/*------------- DETAILS SECTION ------------*/
+.details{
+    position: relative;
+    padding: 15px 20px;
+    transition: box-shadow .2s ease-in-out;
+
+        &:hover{
+            box-shadow: 1px 0px 3px 2px rgb(175, 175, 175);
+        }
+}
+
+.delete{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 20px;
+    top: 30%;
+    border-radius: .35em;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    overflow: hidden;
+    transition: color .2s, box-shadow .2s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 0px 3px 2px rgb(175, 175, 175);
+
+    &:before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 59, 59);
+        transform: translateX(101%);
+        transition: all .2s ease-in-out;
+        transform: will-transform;
+    }
+
+    &:hover::before{
+        transform: translateX(0);
+    }
+    &:hover{
+        color: white;
+        box-shadow: none;
+    }
+}
+
+
+
+/*------------- FOOTER ------------*/
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 100px auto 20px;
+}
