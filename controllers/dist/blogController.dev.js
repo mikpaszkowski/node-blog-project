@@ -5,6 +5,8 @@ var Blog = require('../models/blog');
 
 var moment = require('moment');
 
+var categories = require('../resources/categories');
+
 var blog_index = function blog_index(req, res) {
   Blog.find().sort({
     createdAt: -1
@@ -20,10 +22,16 @@ var blog_index = function blog_index(req, res) {
 
 var blog_create_post = function blog_create_post(req, res) {
   //we can use the req.body only if we have use in our server
-  //the express urlencoded function
+  //the express urlencoded function,
+  req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   var blog = new Blog(req.body);
-  console.log(moment().format('DD-MM-YYYY' + ' HH:MM'));
+  console.log(moment().format('DD-MM-YYYY ' + ' HH:MM'));
   console.log(req.body);
+  blog.save().then(function (result) {
+    res.redirect('/blogs');
+  })["catch"](function (err) {
+    console.log(err);
+  });
 };
 
 var blog_details = function blog_details(req, res) {
@@ -42,7 +50,8 @@ var blog_details = function blog_details(req, res) {
 
 var blog_create_get = function blog_create_get(req, res) {
   res.render('blogs/add', {
-    title: 'Add Blog'
+    title: 'Add Blog',
+    categories: categories
   });
 };
 

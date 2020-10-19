@@ -23,7 +23,12 @@ const blogSchema = new Schema({
     date: {
         type: String,
         required: true,
+    },
+    categories: {
+        type: String,
+        required: true,
     }
+
 }, {timestamps: true });
 
 const Blog = mongoose.model('Blog', blogSchema);

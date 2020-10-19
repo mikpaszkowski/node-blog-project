@@ -55,6 +55,16 @@ nav ul a {
   font-size: 20px;
 }
 
+.blogs {
+  position: relative;
+}
+
+.date {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 /*------------- ABOUT ------------*/
 .about h2 {
   margin-bottom: 25px;
@@ -66,14 +76,20 @@ nav ul a {
   margin: 0 auto;
 }
 .add-blog-form input,
-.add-blog-form textarea {
+.add-blog-form textarea,
+.add-blog-form select {
   display: block;
   width: 100%;
   margin: 0 0 20px 0;
 }
-.add-blog-form input {
+.add-blog-form input,
+.add-blog-form select {
   height: 30px;
   font-size: 1.3em;
+}
+.add-blog-form select {
+  font-size: 1em;
+  height: 35px;
 }
 .add-blog-form textarea {
   height: 150px;
@@ -111,6 +127,7 @@ nav ul a {
 }
 .content p {
   margin-bottom: 20px;
+  margin-right: 109px;
 }
 
 /*------------- EACH BLOG ------------*/

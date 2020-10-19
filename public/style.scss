@@ -63,6 +63,16 @@ nav{
     }
 }
 
+.blogs{
+    position: relative;
+}
+
+.date{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
 
 /*------------- ABOUT ------------*/
 
@@ -80,15 +90,22 @@ nav{
     margin: 0 auto;
 
     input,
-    textarea{
+    textarea,
+    select{
         display: block;
         width: 100%;
         margin: 0 0 20px 0;
     }
 
-    input{
+    input,
+    select{
         height: 30px;
         font-size: 1.3em;
+    }
+
+    select{
+        font-size: 1em;
+        height: 35px;
     }
     textarea{
         height: 150px;
@@ -133,6 +150,7 @@ nav{
     }
     p{
         margin-bottom: 20px;
+        margin-right: 109px;
     }
 }
 

@@ -23,6 +23,10 @@ var blogSchema = new Schema({
   date: {
     type: String,
     required: true
+  },
+  categories: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

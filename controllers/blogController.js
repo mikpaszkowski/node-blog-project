@@ -2,6 +2,7 @@
 
 const Blog = require('../models/blog');
 const moment = require('moment');
+const categories = require('../resources/categories');
 
 
 
@@ -18,10 +19,20 @@ const blog_index = (req, res) => {
 
 const blog_create_post = (req, res) => {
     //we can use the req.body only if we have use in our server
-    //the express urlencoded function
+    //the express urlencoded function,
+
+    req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
     const blog = new Blog(req.body);
-    console.log(moment().format('DD-MM-YYYY' + ' HH:MM'));
+
+    console.log(moment().format('DD-MM-YYYY ' + ' HH:MM'));
     console.log(req.body);
+    blog.save()
+        .then((result) => {
+            res.redirect('/blogs');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 };
 
 const blog_details = (req, res) => {
@@ -36,7 +47,7 @@ const blog_details = (req, res) => {
 };
 
 const blog_create_get = (req, res) => {
-    res.render('blogs/add', { title: 'Add Blog' });
+    res.render('blogs/add', { title: 'Add Blog', categories: categories });
 };
 
 const blog_delete = (req, res) => {
