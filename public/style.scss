@@ -217,3 +217,28 @@ footer{
     text-align: center;
     margin: 100px auto 20px;
 }
+
+
+/************ AUTHOR *****************/
+
+.author{
+    word-spacing: .2em;
+
+    p{
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+}
+
+.author-container{
+    display: flex;
+    flex-direction: row;
+
+    p{
+        margin-left: 15px;
+    }
+
+    .author-icon{
+        font-size: 1.4em;
+    }
+}

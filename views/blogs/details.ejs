@@ -9,6 +9,10 @@
     <div class="details content">
         <h2><%= blog.title %></h2>
         <p><%= blog.body %></p>
+        <div class="author-container">
+            <ion-icon name="person-circle-outline" class="author-icon"></ion-icon>
+            <p><i><%= blog.author %></i></p>
+        </div>
         <a class="delete" data-doc="<%= blog._id %>">delete</a>
     </div>
     <%- include('../partials/footer.ejs') %>

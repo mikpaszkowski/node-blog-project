@@ -31,14 +31,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-
     res.render('about', {title : 'About'});
 });
 
 
 //redirect to /about from /about-us
 app.get('/about-us', (req, res) => {
-
     res.redirect('/about');
 })
 

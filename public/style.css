@@ -257,4 +257,32 @@ footer {
   text-align: center;
   margin: 100px auto 20px;
 }
+
+/************ AUTHOR *****************/
+.author {
+  word-spacing: .2em;
+}
+
+.author p {
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.author-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.author-container p {
+  margin-left: 15px;
+}
+
+.author-container .author-icon {
+  font-size: 1.4em;
+}
 /*# sourceMappingURL=style.css.map */
