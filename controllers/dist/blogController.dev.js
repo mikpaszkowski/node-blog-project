@@ -3,6 +3,8 @@
 // blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
 var Blog = require('../models/blog');
 
+var moment = require('moment');
+
 var blog_index = function blog_index(req, res) {
   Blog.find().sort({
     createdAt: -1
@@ -20,11 +22,8 @@ var blog_create_post = function blog_create_post(req, res) {
   //we can use the req.body only if we have use in our server
   //the express urlencoded function
   var blog = new Blog(req.body);
-  blog.save().then(function (result) {
-    res.redirect('/blogs');
-  })["catch"](function (err) {
-    console.log(err);
-  });
+  console.log(moment().format('DD-MM-YYYY' + ' HH:MM'));
+  console.log(req.body);
 };
 
 var blog_details = function blog_details(req, res) {

@@ -19,6 +19,10 @@ var blogSchema = new Schema({
   author: {
     type: String,
     require: true
+  },
+  date: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

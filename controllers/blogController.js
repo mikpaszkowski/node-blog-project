@@ -1,6 +1,9 @@
 // blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
 
 const Blog = require('../models/blog');
+const moment = require('moment');
+
+
 
 
 const blog_index = (req, res) => {
@@ -17,14 +20,8 @@ const blog_create_post = (req, res) => {
     //we can use the req.body only if we have use in our server
     //the express urlencoded function
     const blog = new Blog(req.body);
-
-    blog.save()
-        .then((result) => {
-            res.redirect('/blogs');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    console.log(moment().format('DD-MM-YYYY' + ' HH:MM'));
+    console.log(req.body);
 };
 
 const blog_details = (req, res) => {

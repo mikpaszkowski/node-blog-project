@@ -147,11 +147,12 @@ nav{
         transition: box-shadow .2s ease-in-out;
 
         h3{
-            transition: color .3s ease-in-out;
+            transition: color .3s ease-in-out, letter-spacing .2s ease-in-out;
         }
 
         &:hover h3{
             color:  rgb(40, 131, 59);
+            letter-spacing: 1px;
         }
 
         &:hover{

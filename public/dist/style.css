@@ -123,10 +123,11 @@ nav ul a {
   transition: box-shadow 0.2s ease-in-out;
 }
 .blogs a h3 {
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, letter-spacing 0.2s ease-in-out;
 }
 .blogs a:hover h3 {
   color: #28833b;
+  letter-spacing: 1px;
 }
 .blogs a:hover {
   box-shadow: 1px 0px 3px 2px #afafaf;

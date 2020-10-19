@@ -162,12 +162,13 @@ nav ul a {
 }
 
 .blogs a h3 {
-  -webkit-transition: color .3s ease-in-out;
-  transition: color .3s ease-in-out;
+  -webkit-transition: color .3s ease-in-out, letter-spacing .2s ease-in-out;
+  transition: color .3s ease-in-out, letter-spacing .2s ease-in-out;
 }
 
 .blogs a:hover h3 {
   color: #28833b;
+  letter-spacing: 1px;
 }
 
 .blogs a:hover {
