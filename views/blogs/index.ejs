@@ -8,6 +8,11 @@
 
     <div class="blogs-display content">
         <h2>All blogs</h2>
+        <select name="categories" id="categories" class="index-categories">
+            <% categories.forEach(element => { %>
+                <option value="<%= element.name%>"><%= element.name %></option>
+            <% }); %> 
+        </select>
         <% if(blogs.length > 0) {%>
         <% blogs.forEach(blog => { %>
         <div class="blogs">

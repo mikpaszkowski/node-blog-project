@@ -10,7 +10,7 @@ const categories = require('../resources/categories');
 const blog_index = (req, res) => {
     Blog.find().sort({ createdAt: -1 })
         .then((result) => {
-            res.render('blogs/index', { title: 'Blogs', blogs: result });
+            res.render('blogs/index', { title: 'Blogs', blogs: result, categories: categories });
         })
         .catch((err) => {
             console.log(err);

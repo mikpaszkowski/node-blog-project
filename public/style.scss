@@ -2,6 +2,7 @@
 
 $font-stack : 'Lato', sans-serif;
 $nice-grey-color: #eee;
+$flat-green: #2ecc71;
 
 
 body{
@@ -27,6 +28,58 @@ nav{
     align-items: flex-end;
     border-bottom: 1px solid rgb(167, 167, 167);
     text-transform: uppercase;
+    position: relative;
+
+    .sign-in-container{
+        display: inline-block;
+        position: absolute;
+        top: .5em;
+        right: .2em;
+        font-weight: 400;
+        font-size: .8em;
+        cursor: pointer;
+
+        .arrow-icon{
+            margin: 0;
+            margin-left: 10px;
+            transition: transform .4s ease-in-out;
+        }
+        .btn-sign-in{
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            transition: all .4s;
+            overflow: hidden;
+            z-index: 2;
+    
+    
+            &:before{
+                content: "";
+                position: absolute;
+                top: -.45em;
+                left: -20px;
+                width: 28%;
+                height: 100%;
+                padding: .5em .4em;
+                background-color: lighten($flat-green, 30%);
+                border-radius: 10em;
+                transition: all .3s ease-in-out;
+                z-index: -1;
+            }
+        }
+        &:hover{
+            .arrow-icon{
+                transform: translateX(10px);
+            }
+            .btn-sign-in::before{
+                width: 125%;
+                background-color: $flat-green;
+                box-shadow: 0px 0px 10px lighten($flat-green, 15%);
+            }
+        }
+    }
+
+    
 
     h1{
         font-size: 3em;
@@ -43,7 +96,7 @@ nav{
 
         li{
             list-style: none;
-            margin-left: 2.5em;
+            margin-left: 1.5em;
         }
         a{
             text-decoration: none;
@@ -57,6 +110,7 @@ nav{
 /*------------- HOME ------------*/
 
 .blog-display{
+    position: relative;
 
     h2{
         font-size: 20px;
@@ -136,8 +190,9 @@ nav{
 
 /*------------- CONTENT SECTION ------------*/
 
-.content{
+.content {
     line-height: 150%;
+    position: relative;
     
     h2{
         font-size: 30px;
@@ -152,7 +207,20 @@ nav{
         margin-bottom: 20px;
         margin-right: 109px;
     }
+    .index-categories{
+        position: absolute;
+        right: .5em;
+        top: .5em;
+        width: 15em;
+        height: 2em;
+        transition: box-shadow .2s ease-in-out;
+
+        &:hover{
+            box-shadow: 1px 0px 3px 2px rgb(175, 175, 175);
+        }
+     }
 }
+
 
 
 /*------------- EACH BLOG ------------*/

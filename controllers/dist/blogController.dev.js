@@ -13,7 +13,8 @@ var blog_index = function blog_index(req, res) {
   }).then(function (result) {
     res.render('blogs/index', {
       title: 'Blogs',
-      blogs: result
+      blogs: result,
+      categories: categories
     });
   })["catch"](function (err) {
     console.log(err);

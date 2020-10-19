@@ -24,6 +24,50 @@ nav {
   align-items: flex-end;
   border-bottom: 1px solid #a7a7a7;
   text-transform: uppercase;
+  position: relative;
+}
+nav .sign-in-container {
+  display: inline-block;
+  position: absolute;
+  top: 0.5em;
+  right: 0.2em;
+  font-weight: 400;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+nav .sign-in-container .arrow-icon {
+  margin: 0;
+  margin-left: 10px;
+  transition: transform 0.4s ease-in-out;
+}
+nav .sign-in-container .btn-sign-in {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s;
+  overflow: hidden;
+  z-index: 2;
+}
+nav .sign-in-container .btn-sign-in:before {
+  content: "";
+  position: absolute;
+  top: -0.45em;
+  left: -20px;
+  width: 28%;
+  height: 100%;
+  padding: 0.5em 0.4em;
+  background-color: #a8ebc4;
+  border-radius: 10em;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+nav .sign-in-container:hover .arrow-icon {
+  transform: translateX(10px);
+}
+nav .sign-in-container:hover .btn-sign-in::before {
+  width: 125%;
+  background-color: #2ecc71;
+  box-shadow: 0px 0px 10px #69dd9a;
 }
 nav h1 {
   font-size: 3em;
@@ -40,7 +84,7 @@ nav ul {
 }
 nav ul li {
   list-style: none;
-  margin-left: 2.5em;
+  margin-left: 1.5em;
 }
 nav ul a {
   text-decoration: none;
@@ -51,6 +95,9 @@ nav ul a {
 }
 
 /*------------- HOME ------------*/
+.blog-display {
+  position: relative;
+}
 .blog-display h2 {
   font-size: 20px;
 }
@@ -116,6 +163,7 @@ nav ul a {
 /*------------- CONTENT SECTION ------------*/
 .content {
   line-height: 150%;
+  position: relative;
 }
 .content h2 {
   font-size: 30px;
@@ -128,6 +176,17 @@ nav ul a {
 .content p {
   margin-bottom: 20px;
   margin-right: 109px;
+}
+.content .index-categories {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  width: 15em;
+  height: 2em;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.content .index-categories:hover {
+  box-shadow: 1px 0px 3px 2px #afafaf;
 }
 
 /*------------- EACH BLOG ------------*/

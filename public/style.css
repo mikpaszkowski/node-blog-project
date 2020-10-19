@@ -30,6 +30,63 @@ nav {
           align-items: flex-end;
   border-bottom: 1px solid #a7a7a7;
   text-transform: uppercase;
+  position: relative;
+}
+
+nav .sign-in-container {
+  display: inline-block;
+  position: absolute;
+  top: .5em;
+  right: .2em;
+  font-weight: 400;
+  font-size: .8em;
+  cursor: pointer;
+}
+
+nav .sign-in-container .arrow-icon {
+  margin: 0;
+  margin-left: 10px;
+  -webkit-transition: -webkit-transform .4s ease-in-out;
+  transition: -webkit-transform .4s ease-in-out;
+  transition: transform .4s ease-in-out;
+  transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out;
+}
+
+nav .sign-in-container .btn-sign-in {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  overflow: hidden;
+  z-index: 2;
+}
+
+nav .sign-in-container .btn-sign-in:before {
+  content: "";
+  position: absolute;
+  top: -.45em;
+  left: -20px;
+  width: 28%;
+  height: 100%;
+  padding: .5em .4em;
+  background-color: #a8ebc4;
+  border-radius: 10em;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  z-index: -1;
+}
+
+nav .sign-in-container:hover .arrow-icon {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+}
+
+nav .sign-in-container:hover .btn-sign-in::before {
+  width: 125%;
+  background-color: #2ecc71;
+  -webkit-box-shadow: 0px 0px 10px #69dd9a;
+          box-shadow: 0px 0px 10px #69dd9a;
 }
 
 nav h1 {
@@ -56,7 +113,7 @@ nav ul {
 
 nav ul li {
   list-style: none;
-  margin-left: 2.5em;
+  margin-left: 1.5em;
 }
 
 nav ul a {
@@ -68,6 +125,10 @@ nav ul a {
 }
 
 /*------------- HOME ------------*/
+.blog-display {
+  position: relative;
+}
+
 .blog-display h2 {
   font-size: 20px;
 }
@@ -149,6 +210,7 @@ nav ul a {
 /*------------- CONTENT SECTION ------------*/
 .content {
   line-height: 150%;
+  position: relative;
 }
 
 .content h2 {
@@ -164,6 +226,23 @@ nav ul a {
 .content p {
   margin-bottom: 20px;
   margin-right: 109px;
+}
+
+.content .index-categories {
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  width: 15em;
+  height: 2em;
+  -webkit-transition: -webkit-box-shadow .2s ease-in-out;
+  transition: -webkit-box-shadow .2s ease-in-out;
+  transition: box-shadow .2s ease-in-out;
+  transition: box-shadow .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.content .index-categories:hover {
+  -webkit-box-shadow: 1px 0px 3px 2px #afafaf;
+          box-shadow: 1px 0px 3px 2px #afafaf;
 }
 
 /*------------- EACH BLOG ------------*/
