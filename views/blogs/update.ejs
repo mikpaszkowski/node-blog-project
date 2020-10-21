@@ -10,28 +10,39 @@
         <form action="/blogs" method="POST">
 
             <label for="title">Blog title:</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" value="<%= blog.title %>">
+            <% var selectedOpt = blog.categories %>
 
             <label for="categories">Category:</label>
-            <select name="categories" id="categories">
+            <select name="categories" id="categories" class="categories" onchange="categorySelected()" data-doc="<%= selectedOpt %>">
                 <% categories.forEach(element => { %>
-                    <option value="<%= element.name%>"><%= element.name %></option>
-                <% }); %> 
+                    <% if(element.name === blog.categories) {%>
+                         <option value="<%= blog.categories %>" selected><%= blog.categories %></option>
+                    <% }else{  %>
+                        <option value="<%= element.name%>"><%= element.name %></option>
+                   <% } %> 
+                <% }); %>
             </select>
 
             <label for="author">Author:</label>
-            <input type="text id" id="author" name="author">
+            <input type="text id" id="author" name="author" value="<%= blog.author %>">
 
             <label for="snippet">Snippet:</label>
-            <input type="text" id="snippet" name="snippet">
+            <input type="text" id="snippet" name="snippet" value="<%= blog.snippet %>">
 
             <label for="body">Blog body:</label>
-            <textarea name="body" id="blog-body"></textarea>
+            <textarea name="body" id="blog-body"><%= blog.body %></textarea>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Change</button>
         </form>
     </div>
     <%- include('../partials/footer.ejs') %>
+
+    <script>
+        function categorySelected() {
+            var option = document.getElementById('categories').dataset.selectedOpt;
+        }
+    </script>
 
 </body>
 

@@ -288,6 +288,46 @@ nav ul a {
           box-shadow: 1px 0px 3px 2px #afafaf;
 }
 
+.details .headline-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+}
+
+.details .headline-edit h2 {
+  margin: 0;
+}
+
+.details .headline-edit .edit-icon {
+  display: inline-block;
+  font-size: 2em;
+  margin-left: 1.2em;
+  margin-bottom: 4px;
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+
+.details .headline-edit .edit-icon:hover {
+  color: #2ecc71;
+}
+
+.details .body-content {
+  margin: 3em 7em 3em 0;
+  padding-right: 2em;
+  border-right: 1px solid #222222;
+}
+
 .delete {
   position: absolute;
   display: -webkit-box;
@@ -374,13 +414,23 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .author-container p {
-  margin-left: 15px;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.author-container .category-tag {
+  margin-left: 3em;
 }
 
 .author-container .author-icon {
   font-size: 1.4em;
 }
+
+/*==============EDIT===============*/
 /*# sourceMappingURL=style.css.map */

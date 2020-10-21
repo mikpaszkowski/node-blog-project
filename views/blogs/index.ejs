@@ -34,7 +34,8 @@
     <script>
 
         function categorySelected() {
-            var option = document.getElementById('categories').value;
+            var sel = document.getElementById('categories').dataset.doc;
+            var option = document.getElementById('categories').value = sel;
 
             var endpoint = `/blogs/category`;
             

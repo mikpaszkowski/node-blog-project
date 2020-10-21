@@ -7,13 +7,15 @@
     <%- include('../partials/nav.ejs') %>
 
     <div class="details content">
-        <h2><%= blog.title %></h2>
-        <a href="/blogs/update">Link kurwa</a>
-        <p><%= blog.body %></p>
+        <div class="headline-edit">
+            <h2><%= blog.title %></h2>
+            <a href="/blogs/update/<%= blog._id %>" class="edit-icon"><ion-icon name="create-outline"></ion-icon></a>
+        </div>
+        <p class="body-content"><%= blog.body %></p>
         <div class="author-container">
             <ion-icon name="person-circle-outline" class="author-icon"></ion-icon>
             <p><i><%= blog.author %></i></p>
-            <p><%= blog.categories %> </p>
+            <p class="category-tag"><%= '#' + blog.categories %></p>
         </div>
         <a class="delete" data-doc="<%= blog._id %>">delete</a>
     </div>

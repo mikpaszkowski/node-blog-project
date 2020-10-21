@@ -37,7 +37,15 @@ const blog_create_get = (req, res) => {
 };
 
 const blog_update_get = (req, res) => {
-    res.render('blogs/update', { title: 'Update', categories: categories });
+    const id = req.params.idNum;
+    Blog.findById(id)
+        .then((result) => {
+            res.render('blogs/update', { blog: result, title: 'Update' });
+            console.log(result);
+        })
+        .catch((err) => {
+            res.status(404).render('404', { title: 'Blog not found' });
+        })
 }
 
 const blog_details = (req, res) => {
@@ -68,9 +76,9 @@ const blog_delete = (req, res) => {
 
 module.exports = {
     blog_index,
+    blog_update_get,
     blog_create_post,
     blog_details,
     blog_create_get,
     blog_delete,
-    blog_update_get
 }
