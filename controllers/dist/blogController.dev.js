@@ -1,6 +1,5 @@
 "use strict";
 
-// blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
 var Blog = require('../models/blog');
 
 var moment = require('moment');
@@ -26,12 +25,24 @@ var blog_create_post = function blog_create_post(req, res) {
   //the express urlencoded function,
   req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   var blog = new Blog(req.body);
-  console.log(moment().format('DD-MM-YYYY ' + ' HH:MM'));
-  console.log(req.body);
   blog.save().then(function (result) {
     res.redirect('/blogs');
   })["catch"](function (err) {
     console.log(err);
+  });
+};
+
+var blog_create_get = function blog_create_get(req, res) {
+  res.render('blogs/add', {
+    title: 'Add Blog',
+    categories: categories
+  });
+};
+
+var blog_update_get = function blog_update_get(req, res) {
+  res.render('blogs/update', {
+    title: 'Update',
+    categories: categories
   });
 };
 
@@ -46,13 +57,6 @@ var blog_details = function blog_details(req, res) {
     res.status(404).render('404', {
       title: 'Blog not found'
     });
-  });
-};
-
-var blog_create_get = function blog_create_get(req, res) {
-  res.render('blogs/add', {
-    title: 'Add Blog',
-    categories: categories
   });
 };
 
@@ -72,5 +76,6 @@ module.exports = {
   blog_create_post: blog_create_post,
   blog_details: blog_details,
   blog_create_get: blog_create_get,
-  blog_delete: blog_delete
+  blog_delete: blog_delete,
+  blog_update_get: blog_update_get
 };

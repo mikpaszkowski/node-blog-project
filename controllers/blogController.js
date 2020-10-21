@@ -1,4 +1,4 @@
-// blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
+
 
 const Blog = require('../models/blog');
 const moment = require('moment');
@@ -24,8 +24,6 @@ const blog_create_post = (req, res) => {
     req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
     const blog = new Blog(req.body);
 
-    console.log(moment().format('DD-MM-YYYY ' + ' HH:MM'));
-    console.log(req.body);
     blog.save()
         .then((result) => {
             res.redirect('/blogs');
@@ -34,6 +32,13 @@ const blog_create_post = (req, res) => {
             console.log(err);
         })
 };
+const blog_create_get = (req, res) => {
+    res.render('blogs/add', { title: 'Add Blog', categories: categories });
+};
+
+const blog_update_get = (req, res) => {
+    res.render('blogs/update', { title: 'Update', categories: categories });
+}
 
 const blog_details = (req, res) => {
     const id = req.params.idNum;
@@ -46,9 +51,7 @@ const blog_details = (req, res) => {
         })
 };
 
-const blog_create_get = (req, res) => {
-    res.render('blogs/add', { title: 'Add Blog', categories: categories });
-};
+
 
 const blog_delete = (req, res) => {
     const id = req.params.id;
@@ -68,5 +71,6 @@ module.exports = {
     blog_create_post,
     blog_details,
     blog_create_get,
-    blog_delete
+    blog_delete,
+    blog_update_get
 }
