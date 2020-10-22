@@ -54,6 +54,19 @@ var blog_update_get = function blog_update_get(req, res) {
   });
 };
 
+var blog_update_put = function blog_update_put(req, res, next) {
+  console.log(req.body);
+  Blog.findByIdAndUpdate({
+    _id: req.params.idNum
+  }, req.body).then(function (result) {
+    res.send(result);
+  })["catch"](function (err) {
+    res.status(404).render('404', {
+      title: 'Blog not found'
+    });
+  });
+};
+
 var blog_details = function blog_details(req, res) {
   var id = req.params.idNum;
   Blog.findById(id).then(function (result) {
@@ -82,6 +95,7 @@ var blog_delete = function blog_delete(req, res) {
 module.exports = {
   blog_index: blog_index,
   blog_update_get: blog_update_get,
+  blog_update_put: blog_update_put,
   blog_create_post: blog_create_post,
   blog_details: blog_details,
   blog_create_get: blog_create_get,
