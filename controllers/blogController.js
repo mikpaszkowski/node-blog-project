@@ -37,22 +37,20 @@ const blog_create_get = (req, res) => {
 };
 
 const blog_update_get = (req, res) => {
-    const id = req.params.idNum;
-    Blog.findById(id)
+    Blog.findById(req.params.idNum)
         .then((result) => {
             res.render('blogs/update', { blog: result, title: 'Update' });
-            console.log(result);
         })
         .catch((err) => {
             res.status(404).render('404', { title: 'Blog not found' });
         })
 }
 
-const blog_update_put = (req, res, next) => {
-    console.log(req.body);
-    Blog.findByIdAndUpdate({_id: req.params.idNum}, req.body)
-        .then(function(result) {
-            res.send(result);
+const blog_update_put = (req, res) => {
+    console.log(req.body)
+    Blog.findByIdAndUpdate(req.params.idPut, {$set: req.body}, {new:true})
+        .then((result) => {
+            res.json({ redirect: '/blogs'})
         })
         .catch((err) => {
             res.status(404).render('404', { title: 'Blog not found' });
@@ -60,8 +58,7 @@ const blog_update_put = (req, res, next) => {
 }
 
 const blog_details = (req, res) => {
-    const id = req.params.idNum;
-    Blog.findById(id)
+    Blog.findById(req.params.idNum)
         .then((result) => {
             res.render('blogs/details', { blog: result, title: 'Blog Details' });
         })
@@ -73,9 +70,7 @@ const blog_details = (req, res) => {
 
 
 const blog_delete = (req, res) => {
-    const id = req.params.id;
-
-    Blog.findByIdAndDelete(id)
+    Blog.findByIdAndDelete(req.params.id)
         .then((result) => {
             res.json({ redirect: '/blogs' });
         })

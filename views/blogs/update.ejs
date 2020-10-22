@@ -7,7 +7,7 @@
     <%- include('../partials/nav.ejs') %>
 
     <div class="add-blog-form content">
-        <form action="/blogs/<%= blog._id %>" method="POST">
+        <form>
 
             <label for="title">Blog title:</label>
             <input type="text" id="title" name="title" value="<%= blog.title %>">
@@ -32,7 +32,7 @@
             <label for="body">Blog body:</label>
             <textarea name="body" id="blog-body"><%= blog.body %></textarea>
 
-            <button type="submit" class="btn-update" data-doc="<%= blog._id %> ">Change</button>
+            <button class="btn-update" data-doc="<%= blog._id %> ">Change</button>
         </form>
     </div>
     <%- include('../partials/footer.ejs') %>
@@ -42,20 +42,18 @@
             var option = document.getElementById('categories').dataset.selectedOpt;
         }
 
-        const deleteButton = document.querySelector('.btn-update');
+        const changeButton = document.querySelector('.btn-update');
 
-        deleteButton.addEventListener('click', (e) => {
-
-            const endPoint = `/blogs/update/${deleteButton.dataset.doc}`;
+        changeButton.addEventListener('click', (e) => {
+            const endPoint = `/blogs/update/${e.target.dataset.doc}`;
 
             fetch(endPoint, {
-                    method: 'PUT'
-                })
-                .then((response) => response.json())
-                .then((data) => window.location.href = data.redirect)
-                .catch((err) => {
-                    console.log(err);
-                })
+                method: 'PUT'
+            })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch(err => console.log(err));
+
         })
     </script>
 

@@ -40,13 +40,11 @@ var blog_create_get = function blog_create_get(req, res) {
 };
 
 var blog_update_get = function blog_update_get(req, res) {
-  var id = req.params.idNum;
-  Blog.findById(id).then(function (result) {
+  Blog.findById(req.params.idNum).then(function (result) {
     res.render('blogs/update', {
       blog: result,
       title: 'Update'
     });
-    console.log(result);
   })["catch"](function (err) {
     res.status(404).render('404', {
       title: 'Blog not found'
@@ -54,12 +52,16 @@ var blog_update_get = function blog_update_get(req, res) {
   });
 };
 
-var blog_update_put = function blog_update_put(req, res, next) {
+var blog_update_put = function blog_update_put(req, res) {
   console.log(req.body);
-  Blog.findByIdAndUpdate({
-    _id: req.params.idNum
-  }, req.body).then(function (result) {
-    res.send(result);
+  Blog.findByIdAndUpdate(req.params.idPut, {
+    $set: req.body
+  }, {
+    "new": true
+  }).then(function (result) {
+    res.json({
+      redirect: '/blogs'
+    });
   })["catch"](function (err) {
     res.status(404).render('404', {
       title: 'Blog not found'
@@ -68,8 +70,7 @@ var blog_update_put = function blog_update_put(req, res, next) {
 };
 
 var blog_details = function blog_details(req, res) {
-  var id = req.params.idNum;
-  Blog.findById(id).then(function (result) {
+  Blog.findById(req.params.idNum).then(function (result) {
     res.render('blogs/details', {
       blog: result,
       title: 'Blog Details'
@@ -82,8 +83,7 @@ var blog_details = function blog_details(req, res) {
 };
 
 var blog_delete = function blog_delete(req, res) {
-  var id = req.params.id;
-  Blog.findByIdAndDelete(id).then(function (result) {
+  Blog.findByIdAndDelete(req.params.id).then(function (result) {
     res.json({
       redirect: '/blogs'
     });
