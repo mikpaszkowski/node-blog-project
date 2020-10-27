@@ -40,26 +40,16 @@
 
                 keyWord = e.target.value.toLowerCase();
                 artList = document.querySelectorAll('.single-articles');
-                console.log('keyWord: ' + keyWord);
+
                 Array.from(artList).forEach(function(article){
                     artCat = article.lastElementChild.textContent.toLowerCase();
-                    if(keyWord == artCat){
-                        console.log('here');
-                        article.style.display = 'block';
-                    }else if(keyWord === 'all'){
+                    if(keyWord === artCat || keyWord === 'all'){
                         article.style.display = 'block';
                     }else{
                         article.style.display = 'none';
                     }
-                })
+                });
             });
-
-            var nodeListForEach = function(list, callback){
-                for(var i = 0; i < list.length; i++) {
-                    callback(list[i], i);
-                };
-            };
-
     </script>
 </body>
 
