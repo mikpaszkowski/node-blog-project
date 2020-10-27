@@ -8,7 +8,7 @@
 
     <div class="blogs-display content">
         <h2>All blogs</h2>
-        <select name="categories" id="categories" class="index-categories" onchange="categorySelected()">
+        <select name="categories" id="categories" class="index-categories">
             <option value="all" selected>All</option>
             <% categories.forEach(element => { %>
                 <option value="<%= element.name%>"><%= element.name %></option>
@@ -17,11 +17,12 @@
         <% if(blogs.length > 0) {%>
         <% blogs.forEach(blog => { %>
         <div class="blogs">
-            <a href="/blogs/<%= blog._id %>">
+            <a href="/blogs/<%= blog._id %>" class="single-articles">
                 <h3 class="title"><%= blog.title %></h3>
                 <p class="snippet"><%= blog.snippet %></p>
                 <p class="author"><i><%= "by " + blog.author %></i></p>
                 <p class="date"><i><%= blog.date %> </i></p>
+                <p class="article-category"><%= blog.categories %></p>
             </a>
         </div>
         <% }) %>
@@ -32,15 +33,33 @@
     <%- include('../partials/footer.ejs') %>
 
     <script>
+            var category = document.getElementById('categories');
 
-        function categorySelected() {
-            var sel = document.getElementById('categories').dataset.doc;
-            var option = document.getElementById('categories').value = sel;
+            category.addEventListener('click', function(e) {
+                var keyWord, artList, artCat;
 
-            var endpoint = `/blogs/category`;
-            
-        }
-        
+                keyWord = e.target.value.toLowerCase();
+                artList = document.querySelectorAll('.single-articles');
+                console.log('keyWord: ' + keyWord);
+                Array.from(artList).forEach(function(article){
+                    artCat = article.lastElementChild.textContent.toLowerCase();
+                    if(keyWord == artCat){
+                        console.log('here');
+                        article.style.display = 'block';
+                    }else if(keyWord === 'all'){
+                        article.style.display = 'block';
+                    }else{
+                        article.style.display = 'none';
+                    }
+                })
+            });
+
+            var nodeListForEach = function(list, callback){
+                for(var i = 0; i < list.length; i++) {
+                    callback(list[i], i);
+                };
+            };
+
     </script>
 </body>
 
