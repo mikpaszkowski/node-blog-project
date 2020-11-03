@@ -21,7 +21,8 @@ mongoose.connect(mongodbURI, {
   return app.listen(3000);
 })["catch"](function (err) {
   return console.log(err);
-}); //registering view engine EJS (HTML template engine)
+});
+mongoose.set('useFindAndModify', false); //registering view engine EJS (HTML template engine)
 
 app.set('view engine', 'ejs'); // if the views directory is different then the default on - 'views'
 //app.set('views', 'myviews');

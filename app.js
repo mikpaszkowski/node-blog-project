@@ -13,6 +13,10 @@ mongoose.connect(mongodbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => app.listen(3000))
     .catch((err) => console.log(err));
 
+mongoose.set('useFindAndModify', false);
+
+
+
 //registering view engine EJS (HTML template engine)
 app.set('view engine', 'ejs');
 

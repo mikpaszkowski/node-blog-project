@@ -3,6 +3,7 @@
 const Blog = require('../models/blog');
 const moment = require('moment');
 const categories = require('../resources/categories');
+const { options } = require('../routes/blogRoutes');
 
 
 
@@ -47,14 +48,16 @@ const blog_update_get = (req, res) => {
 }
 
 const blog_update_put = (req, res) => {
-    console.log(req.body)
-    Blog.findByIdAndUpdate(req.params.idPut, {$set: req.body}, {new:true})
-        .then((result) => {
-            res.json({ redirect: '/blogs'})
+    console.log(req.body);
+    console.log('_id:' + req.params.idPut)
+    Blog.findByIdAndUpdate({_id: req.params.idPut}, {$set: req.body}, {new: true})
+        .then(result => {
+            res.redirect('/blogs');
         })
-        .catch((err) => {
-            res.status(404).render('404', { title: 'Blog not found' });
+        .catch(err => {
+            res.status(404).render('404', { title: 'Update failed' });
         })
+  
 }
 
 const blog_details = (req, res) => {

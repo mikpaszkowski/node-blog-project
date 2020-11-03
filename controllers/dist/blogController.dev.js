@@ -6,6 +6,9 @@ var moment = require('moment');
 
 var categories = require('../resources/categories');
 
+var _require = require('../routes/blogRoutes'),
+    options = _require.options;
+
 var blog_index = function blog_index(req, res) {
   Blog.find().sort({
     createdAt: -1
@@ -54,17 +57,18 @@ var blog_update_get = function blog_update_get(req, res) {
 
 var blog_update_put = function blog_update_put(req, res) {
   console.log(req.body);
-  Blog.findByIdAndUpdate(req.params.idPut, {
+  console.log('_id:' + req.params.idPut);
+  Blog.findByIdAndUpdate({
+    _id: req.params.idPut
+  }, {
     $set: req.body
   }, {
     "new": true
   }).then(function (result) {
-    res.json({
-      redirect: '/blogs'
-    });
+    res.redirect('/blogs');
   })["catch"](function (err) {
     res.status(404).render('404', {
-      title: 'Blog not found'
+      title: 'Update failed'
     });
   });
 };
