@@ -48,8 +48,9 @@ const blog_update_get = (req, res) => {
 }
 
 const blog_update_put = (req, res) => {
-    console.log(req.body);
-    console.log('_id:' + req.params.idPut)
+
+    req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
     Blog.findByIdAndUpdate({_id: req.params.idPut}, {$set: req.body}, {new: true})
         .then(result => {
             res.redirect('/blogs');

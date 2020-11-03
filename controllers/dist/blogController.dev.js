@@ -56,8 +56,7 @@ var blog_update_get = function blog_update_get(req, res) {
 };
 
 var blog_update_put = function blog_update_put(req, res) {
-  console.log(req.body);
-  console.log('_id:' + req.params.idPut);
+  req.body.date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   Blog.findByIdAndUpdate({
     _id: req.params.idPut
   }, {
