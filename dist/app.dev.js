@@ -8,9 +8,7 @@ var mongoose = require('mongoose');
 
 var Blog = require('./models/blog');
 
-var blogRoutes = require('./routes/blogRoutes');
-
-var authRoutes = require('./routes/auth-routes'); //creating an instance of the express app
+var blogRoutes = require('./routes/blogRoutes'); //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -18,16 +16,13 @@ var app = express(); //connecting to the mondoDB base listening for requests on 
 var mongodbURI = 'mongodb+srv://new-user_2020:someuser12345@nodedb.v4vhx.mongodb.net/note-db?retryWrites=true&w=majority';
 mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+  useUnifiedTopology: true
 }).then(function (result) {
   return app.listen(3000);
 })["catch"](function (err) {
   return console.log(err);
 });
-mongoose.set('useFindAndModify', false); //new-user123
-//12345
-//registering view engine EJS (HTML template engine)
+mongoose.set('useFindAndModify', false); //registering view engine EJS (HTML template engine)
 
 app.set('view engine', 'ejs'); // if the views directory is different then the default on - 'views'
 //app.set('views', 'myviews');
@@ -51,8 +46,7 @@ app.get('/about', function (req, res) {
 app.get('/about-us', function (req, res) {
   res.redirect('/about');
 });
-app.use('/blogs', blogRoutes);
-app.use(authRoutes); //default 404 page
+app.use('/blogs', blogRoutes); //default 404 page
 
 app.use(function (req, res) {
   res.status(404).render('404', {
