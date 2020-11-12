@@ -8,7 +8,9 @@ var mongoose = require('mongoose');
 
 var Blog = require('./models/blog');
 
-var blogRoutes = require('./routes/blogRoutes'); //creating an instance of the express app
+var blogRoutes = require('./routes/blogRoutes');
+
+var authRoutes = require('./routes/authRoutes'); //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -46,7 +48,8 @@ app.get('/about', function (req, res) {
 app.get('/about-us', function (req, res) {
   res.redirect('/about');
 });
-app.use('/blogs', blogRoutes); //default 404 page
+app.use('/blogs', blogRoutes);
+app.use(authRoutes); //default 404 page
 
 app.use(function (req, res) {
   res.status(404).render('404', {

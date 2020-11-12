@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 const blogRoutes = require('./routes/blogRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 //creating an instance of the express app
 const app = express();
@@ -45,6 +46,7 @@ app.get('/about-us', (req, res) => {
 })
 
 app.use('/blogs', blogRoutes); 
+app.use(authRoutes);
 
 
 //default 404 page
