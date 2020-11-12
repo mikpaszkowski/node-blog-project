@@ -3,7 +3,7 @@
 const Blog = require('../models/blog');
 const moment = require('moment');
 const categories = require('../resources/categories');
-const { options } = require('../routes/blogRoutes');
+
 
 
 

@@ -6,9 +6,6 @@ var moment = require('moment');
 
 var categories = require('../resources/categories');
 
-var _require = require('../routes/blogRoutes'),
-    options = _require.options;
-
 var blog_index = function blog_index(req, res) {
   Blog.find().sort({
     createdAt: -1
