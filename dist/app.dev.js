@@ -8,7 +8,9 @@ var mongoose = require('mongoose');
 
 var Blog = require('./models/blog');
 
-var blogRoutes = require('./routes/blogRoutes'); //creating an instance of the express app
+var blogRoutes = require('./routes/blogRoutes');
+
+var authRoutes = require('./routes/authRoutes'); //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -18,17 +20,19 @@ mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(function (result) {
-  return app.listen(3000);
+  return app.listen(3030);
 })["catch"](function (err) {
   return console.log(err);
 });
-mongoose.set('useFindAndModify', false); //registering view engine EJS (HTML template engine)
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true); //registering view engine EJS (HTML template engine)
 
 app.set('view engine', 'ejs'); // if the views directory is different then the default on - 'views'
 //app.set('views', 'myviews');
 //middleware & static files
 
 app.use(express["static"]('public'));
+app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
@@ -46,7 +50,8 @@ app.get('/about', function (req, res) {
 app.get('/about-us', function (req, res) {
   res.redirect('/about');
 });
-app.use('/blogs', blogRoutes); //default 404 page
+app.use('/blogs', blogRoutes);
+app.use(authRoutes); //default 404 page
 
 app.use(function (req, res) {
   res.status(404).render('404', {
