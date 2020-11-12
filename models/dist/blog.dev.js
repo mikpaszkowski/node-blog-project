@@ -2,8 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
-var blogSchema = new Schema({
+var blogSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -31,5 +30,4 @@ var blogSchema = new Schema({
 }, {
   timestamps: true
 });
-var Blog = mongoose.model('Blog', blogSchema);
-module.exports = Blog;
+module.exports = mongoose.model('Blog', blogSchema);

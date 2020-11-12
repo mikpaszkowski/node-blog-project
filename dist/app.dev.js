@@ -20,17 +20,19 @@ mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(function (result) {
-  return app.listen(3000);
+  return app.listen(3030);
 })["catch"](function (err) {
   return console.log(err);
 });
-mongoose.set('useFindAndModify', false); //registering view engine EJS (HTML template engine)
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true); //registering view engine EJS (HTML template engine)
 
 app.set('view engine', 'ejs'); // if the views directory is different then the default on - 'views'
 //app.set('views', 'myviews');
 //middleware & static files
 
 app.use(express["static"]('public'));
+app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));

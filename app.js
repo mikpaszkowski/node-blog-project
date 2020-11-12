@@ -11,11 +11,11 @@ const app = express();
 //connecting to the mondoDB base listening for requests on the port 3000
 const mongodbURI = 'mongodb+srv://new-user_2020:someuser12345@nodedb.v4vhx.mongodb.net/note-db?retryWrites=true&w=majority';
 mongoose.connect(mongodbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(3030))
     .catch((err) => console.log(err));
 
 mongoose.set('useFindAndModify', false);
-
+mongoose.set('useCreateIndex', true);
 
 
 //registering view engine EJS (HTML template engine)
@@ -26,6 +26,7 @@ app.set('view engine', 'ejs');
 
 //middleware & static files
 app.use(express.static('public'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
