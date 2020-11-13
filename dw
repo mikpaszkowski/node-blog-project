@@ -1,0 +1,24 @@
+[33mae23683[m[33m ([m[1;36mHEAD -> [m[1;32mauthentication[m[33m, [m[1;31morigin/authentication[m[33m)[m mongoose validation/user schema
+[33m49a8c9c[m add-auth-file-structure
+[33mdbc7c7b[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m Revert "add-auth-file-structure"
+[33m9924870[m add-auth-file-structure
+[33m9dcd1a1[m clean code
+[33m9fcf033[m put
+[33m6c692c3[m filtering by category
+[33m865775e[m filtering by category
+[33mc6bd7e4[m put
+[33mb3e64bc[m put request
+[33m68071ad[m put/update view/style
+[33m17be95f[m update blog option
+[33mc08ec3d[m sign in button/new card/filtering
+[33m55115fb[m categories of articles
+[33m3017b7a[m date property
+[33m27afee4[m author property
+[33mc9b3c2a[m commit on master
+[33mdc19db2[m MVC pattern & routes
+[33m030c1c9[m Requests - get/post/delete & styles
+[33m0b20ea0[m styles
+[33m5436bcc[m Partials
+[33m2510762[m index.ejs/render
+[33ma0f482e[m remove gitignore files
+[33m025a0d4[m EJS
