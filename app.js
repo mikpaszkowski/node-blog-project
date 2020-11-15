@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 const blogRoutes = require('./routes/blogRoutes');
 const authRoutes = require('./routes/authRoutes');
+const cookieParses = require('cookie-parser');
 
 //creating an instance of the express app
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(cookieParses());
 
 
 //requests

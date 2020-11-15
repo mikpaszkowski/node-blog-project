@@ -10,7 +10,9 @@ var Blog = require('./models/blog');
 
 var blogRoutes = require('./routes/blogRoutes');
 
-var authRoutes = require('./routes/authRoutes'); //creating an instance of the express app
+var authRoutes = require('./routes/authRoutes');
+
+var cookieParses = require('cookie-parser'); //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -36,7 +38,8 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-app.use(morgan('dev')); //requests
+app.use(morgan('dev'));
+app.use(cookieParses()); //requests
 
 app.get('/', function (req, res) {
   res.redirect('/blogs');

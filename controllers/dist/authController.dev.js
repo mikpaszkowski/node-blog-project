@@ -2,6 +2,11 @@
 
 var User = require('../models/user');
 
+var jwt = require('jsonwebtoken');
+
+var _require = require('moment'),
+    max = _require.max;
+
 var handleErrors = function handleErrors(err) {
   console.log(err.message, err.code);
   var errors = {
@@ -25,6 +30,16 @@ var handleErrors = function handleErrors(err) {
   return errors;
 };
 
+var maxAge = 3 * 60 * 60;
+
+var createJWToken = function createJWToken(id) {
+  return jwt.sign({
+    id: id
+  }, 'new user at my website', {
+    expiresIn: maxAge
+  });
+};
+
 var signup_get = function signup_get(req, res) {
   res.render('signup', {
     title: 'Sing Up'
@@ -32,7 +47,7 @@ var signup_get = function signup_get(req, res) {
 };
 
 var signup_post = function signup_post(req, res) {
-  var _req$body, email, password, user, errors;
+  var _req$body, email, password, user, token, errors;
 
   return regeneratorRuntime.async(function signup_post$(_context) {
     while (1) {
@@ -48,27 +63,34 @@ var signup_post = function signup_post(req, res) {
 
         case 4:
           user = _context.sent;
-          _context.next = 7;
-          return regeneratorRuntime.awrap(res.status(201).json(user));
-
-        case 7:
-          _context.next = 13;
-          break;
+          token = createJWToken(user._id);
+          res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000
+          });
+          _context.next = 9;
+          return regeneratorRuntime.awrap(res.status(201).json({
+            user: user._id
+          }));
 
         case 9:
-          _context.prev = 9;
+          _context.next = 15;
+          break;
+
+        case 11:
+          _context.prev = 11;
           _context.t0 = _context["catch"](1);
           errors = handleErrors(_context.t0);
           res.status(400).json({
             errors: errors
           });
 
-        case 13:
+        case 15:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[1, 9]]);
+  }, null, null, [[1, 11]]);
 };
 
 var login_get = function login_get(req, res) {
