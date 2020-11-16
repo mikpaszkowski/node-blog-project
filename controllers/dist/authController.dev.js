@@ -12,7 +12,14 @@ var handleErrors = function handleErrors(err) {
   var errors = {
     email: '',
     password: ''
-  }; //error code of duplicate records
+  }; //email
+
+  if (err.message.includes('Incorrect email')) {
+    errors.email = 'That email is not registered';
+  } else if (err.message.includes('Incorrect password')) {
+    errors.password = 'The password is incorrect';
+  } //error code of duplicate records
+
 
   if (err.code == 11000) {
     errors.email = "This email already exists";
@@ -100,7 +107,7 @@ var login_get = function login_get(req, res) {
 };
 
 var login_post = function login_post(req, res) {
-  var _req$body2, email, password, user, errors;
+  var _req$body2, email, password, user, token, errors;
 
   return regeneratorRuntime.async(function login_post$(_context2) {
     while (1) {
@@ -109,34 +116,35 @@ var login_post = function login_post(req, res) {
           _req$body2 = req.body, email = _req$body2.email, password = _req$body2.password;
           _context2.prev = 1;
           _context2.next = 4;
-          return regeneratorRuntime.awrap(User.create({
-            email: email,
-            password: password
-          }));
+          return regeneratorRuntime.awrap(User.logIn(email, password));
 
         case 4:
           user = _context2.sent;
-          _context2.next = 7;
-          return regeneratorRuntime.awrap(res.status(201).json(user));
-
-        case 7:
-          _context2.next = 13;
+          token = createJWToken(user._id);
+          res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: maxAge * 1000
+          });
+          res.status(200).json({
+            user: user._id
+          });
+          _context2.next = 14;
           break;
 
-        case 9:
-          _context2.prev = 9;
+        case 10:
+          _context2.prev = 10;
           _context2.t0 = _context2["catch"](1);
           errors = handleErrors(_context2.t0);
           res.status(400).json({
             errors: errors
           });
 
-        case 13:
+        case 14:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[1, 9]]);
+  }, null, null, [[1, 10]]);
 };
 
 module.exports = {
