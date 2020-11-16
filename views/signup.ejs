@@ -29,6 +29,11 @@
         singUpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            //reset validation errors
+            emailErr.textContent = '';
+            passwordErr.textContent = '';
+
+
             //values from inputs
             const email = singUpForm.email.value;
             const password = singUpForm.password.value;
@@ -45,6 +50,9 @@
                 if(data.errors){
                     emailErr.textContent = data.errors.email;
                     passwordErr.textContent = data.errors.password;
+                }
+                if(data.user){
+                    location.assign('/blogs');
                 }
             }catch(err){
                 console.log(err);

@@ -7,6 +7,13 @@ const handleErrors = (err) => {
     console.log(err.message, err.code);
     let errors = { email: '', password: '' };
 
+    //email
+    if(err.message.includes('Incorrect email')){
+        errors.email = 'That email is not registered';
+    }else if(err.message.includes('Incorrect password')){
+        errors.password = 'The password is incorrect';
+    }
+
     //error code of duplicate records
     if(err.code == 11000){
         errors.email = "This email already exists";
@@ -20,6 +27,8 @@ const handleErrors = (err) => {
     }
     return errors;
 };
+
+
 
 
 const maxAge = 3 * 60 * 60;
@@ -54,11 +63,13 @@ const login_get = (req, res) => {
 const login_post = async (req, res) => {
     const { email, password } = req.body;
     try{
-        const user = await User.create({email, password});
-        await res.status(201).json(user);
+        const user = await User.logIn(email, password);
+        const token = createJWToken(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.status(200).json({ user: user._id });
     }catch(err){
         const errors = handleErrors(err);
-        res.status(400).json({ errors })
+        res.status(400).json({ errors });
     }
 };
 

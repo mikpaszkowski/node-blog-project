@@ -51,5 +51,52 @@ userSchema.pre('save', function _callee(next) {
       }
     }
   }, null, this);
-});
+}); //static function to log in the user
+
+userSchema.statics.logIn = function _callee2(email, password) {
+  var user, userAuth;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.next = 2;
+          return regeneratorRuntime.awrap(this.findOne({
+            email: email
+          }));
+
+        case 2:
+          user = _context2.sent;
+
+          if (!user) {
+            _context2.next = 10;
+            break;
+          }
+
+          _context2.next = 6;
+          return regeneratorRuntime.awrap(bcrypt.compare(password, user.password));
+
+        case 6:
+          userAuth = _context2.sent;
+
+          if (!userAuth) {
+            _context2.next = 9;
+            break;
+          }
+
+          return _context2.abrupt("return", user);
+
+        case 9:
+          throw Error('Incorrect password');
+
+        case 10:
+          throw Error('Incorrect email');
+
+        case 11:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, null, this);
+};
+
 module.exports = mongoose.model('User', userSchema);
