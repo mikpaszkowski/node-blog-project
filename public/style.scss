@@ -453,6 +453,49 @@ footer{
 }
 
 
+/*==============NAV-AUTH-HEADER===============*/
+
+.nav-auth{
+    display: flex;
+    justify-content: flex-end;
+
+
+    .btn{
+        width: 100px;
+        height: auto;
+        font-family: $font-stack;
+        text-align: center;;
+        font-size: 1em;
+        font-weight: 400;
+        padding: 10px 10px;
+        border-radius: .35em;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+    }
+
+    .btn-sign-up{
+        background-color: $flat-green;
+        border: none;
+        margin-left: 30px;
+        color: white;
+
+        &:hover{
+            background-color: darken($flat-green, 10%);
+        }
+    }
+
+    .btn-log-in{
+        background-color: transparent;
+        border: 1px solid  $flat-green;
+        color: $flat-green;
+        
+
+        &:hover{
+            background-color: $flat-green;
+            color: white;
+        }
+    }
+}
 
 
 

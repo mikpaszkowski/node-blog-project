@@ -389,4 +389,40 @@ footer {
   color: #555555;
 }
 
+/*==============NAV-AUTH-HEADER===============*/
+.nav-auth {
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-auth .btn {
+  width: 100px;
+  height: auto;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 10px 10px;
+  border-radius: 0.35em;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.nav-auth .btn-sign-up {
+  background-color: #2ecc71;
+  border: none;
+  margin-left: 30px;
+  color: white;
+}
+.nav-auth .btn-sign-up:hover {
+  background-color: #25a25a;
+}
+.nav-auth .btn-log-in {
+  background-color: transparent;
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+}
+.nav-auth .btn-log-in:hover {
+  background-color: #2ecc71;
+  color: white;
+}
+
 /*==============EDIT===============*/

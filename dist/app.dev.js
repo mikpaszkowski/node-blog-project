@@ -12,7 +12,10 @@ var blogRoutes = require('./routes/blogRoutes');
 
 var authRoutes = require('./routes/authRoutes');
 
-var cookieParses = require('cookie-parser'); //creating an instance of the express app
+var cookieParses = require('cookie-parser');
+
+var _require = require('./middleware/authMiddleware'),
+    requireAuth = _require.requireAuth; //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -42,18 +45,18 @@ app.use(morgan('dev'));
 app.use(cookieParses()); //requests
 
 app.get('/', function (req, res) {
-  res.redirect('/blogs');
+  res.redirect('/login');
 });
-app.get('/about', function (req, res) {
+app.get('/about', requireAuth, function (req, res) {
   res.render('about', {
     title: 'About'
   });
 }); //redirect to /about from /about-us
 
-app.get('/about-us', function (req, res) {
+app.get('/about-us', requireAuth, function (req, res) {
   res.redirect('/about');
 });
-app.use('/blogs', blogRoutes);
+app.use('/blogs', requireAuth, blogRoutes);
 app.use(authRoutes); //default 404 page
 
 app.use(function (req, res) {
