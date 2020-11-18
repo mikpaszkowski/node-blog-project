@@ -147,9 +147,17 @@ var login_post = function login_post(req, res) {
   }, null, null, [[1, 10]]);
 };
 
+var logout_get = function logout_get(req, res) {
+  res.cookie('jwt', '', {
+    maxAge: 1
+  });
+  res.redirect('/login');
+};
+
 module.exports = {
   signup_get: signup_get,
   signup_post: signup_post,
   login_get: login_get,
-  login_post: login_post
+  login_post: login_post,
+  logout_get: logout_get
 };

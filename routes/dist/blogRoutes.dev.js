@@ -4,6 +4,9 @@ var express = require('express');
 
 var blogController = require('../controllers/blogController');
 
+var _require = require('../middleware/authMiddleware'),
+    requireAuth = _require.requireAuth;
+
 var router = express.Router(); //website routes
 
 router.get('/', blogController.blog_index);
