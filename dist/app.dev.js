@@ -15,7 +15,8 @@ var authRoutes = require('./routes/authRoutes');
 var cookieParses = require('cookie-parser');
 
 var _require = require('./middleware/authMiddleware'),
-    requireAuth = _require.requireAuth; //creating an instance of the express app
+    requireAuth = _require.requireAuth,
+    checkUser = _require.checkUser; //creating an instance of the express app
 
 
 var app = express(); //connecting to the mondoDB base listening for requests on the port 3000
@@ -56,6 +57,7 @@ app.get('/about', requireAuth, function (req, res) {
 app.get('/about-us', requireAuth, function (req, res) {
   res.redirect('/about');
 });
+app.get('*', checkUser);
 app.use('/blogs', requireAuth, blogRoutes);
 app.use(authRoutes); //default 404 page
 

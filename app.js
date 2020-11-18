@@ -5,7 +5,7 @@ const Blog = require('./models/blog');
 const blogRoutes = require('./routes/blogRoutes');
 const authRoutes = require('./routes/authRoutes');
 const cookieParses = require('cookie-parser');
-const { requireAuth } = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 //creating an instance of the express app
 const app = express();
@@ -47,7 +47,9 @@ app.get('/about', requireAuth, (req, res) => {
 //redirect to /about from /about-us
 app.get('/about-us', requireAuth, (req, res) => {
     res.redirect('/about');
-})
+});
+
+app.get('*', checkUser);
 
 app.use('/blogs', requireAuth, blogRoutes); 
 app.use(authRoutes);

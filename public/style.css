@@ -16,6 +16,7 @@ p, h1, h2, h3, a, ul {
 }
 
 nav {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,6 +123,12 @@ nav ul a {
   font-size: .7em;
   font-weight: 400;
   color: black;
+}
+
+nav .welcome-text {
+  position: absolute;
+  top: 5%;
+  left: 55%;
 }
 
 /*------------- HOME ------------*/
