@@ -3,9 +3,9 @@
 ## Overview
 
 This small project have one goal, to improve my skills in the back-end of applications. 
-This app execute simple CRUD operations such us GET/POST/DELETE (without Update yet) to
+This app execute simple CRUD operations such us GET/POST/DELETE/PUT to
 save this data in the MongoDB database. Whole strucutre of the project is kept within
-the MVC pattern.
+the MVC pattern. Additionally, the authentication is provided by the JWT token.
 
 ## Tech Stack
 
@@ -14,6 +14,8 @@ the MVC pattern.
 * MongoDB + Mongoose
 
 * HTML + CSS (SCSS) + JavaScript
+
+* JWT auth
 
 ## Reviews
 
